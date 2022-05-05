@@ -2,9 +2,9 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import logo from '../../assets/header/logo.png'
 import search from '../../assets/header/search.png'
 
-export default function Header() {
+export default function Header(props) {
   const openSearch = () => {
-    console.log('oleg')
+    props.navigation.navigate('Search')
   }
 
   return (
