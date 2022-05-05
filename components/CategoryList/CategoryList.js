@@ -18,44 +18,39 @@ const DATA = [
     },
     {
         id: 3,
-        title: 'Мясо',
+        title: 'Молочко',
         img: Cucumber
     },
     {
         id: 4,
-        title: 'Мясо',
+        title: 'Яйца',
         img: Cucumber
     },
     {
         id: 5,
-        title: 'Мясо',
+        title: 'Сыр',
         img: Cucumber
     },
     {
         id: 6,
-        title: 'Мясо',
+        title: 'Выпечка',
         img: Cucumber
     },
     {
         id: 7,
-        title: 'Мясо',
+        title: 'Сладости',
         img: Cucumber
     },
     {
         id: 8,
-        title: 'Мясо',
+        title: 'Фрукты',
         img: Cucumber
     },
     {
         id: 9,
-        title: 'Мясо',
+        title: 'Рыба',
         img: Cucumber
-    },
-    {
-        id: 9,
-        title: 'Мясо',
-        img: Cucumber
-    },
+    }
 ]
 
 // const CategoriesOutput = () => {
@@ -72,8 +67,9 @@ const DATA = [
 
 const CategoryItem = ({ data }) => {
     return (
-        <View>
-            <Text>{data.title}</Text>
+        <View style={styles.categoryItem}>
+            <Text style={styles.categoryTitle}>{data.title}</Text>
+            <Image style={styles.categoryImg} source={data.img} />
         </View>
     )
 }
@@ -81,21 +77,21 @@ const CategoryItem = ({ data }) => {
 
 export default function CategoryList() {
 
-    const RenderItem = ({item}) => {
+    const RenderItem = ({ item }) => {
         return (
-            <CategoryItem data={item}/>
+            <CategoryItem data={item} />
         )
     }
 
-    
+
     return (
         <SafeAreaView style={styles.container}>
-          <FlatList 
-            data={DATA}
-            renderItem={RenderItem}
-            keyExtractor={item => item.id}
+            <FlatList
+                data={DATA}
+                renderItem={RenderItem}
+                keyExtractor={item => item.id}
 
-          />
+            />
         </SafeAreaView>
     );
 
@@ -103,13 +99,35 @@ export default function CategoryList() {
 
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
     categoryItem: {
-        backgroundColor: 'red',
+
+        flex: 1,
+        padding: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        alignSelf: 'stretch',
+        backgroundColor: '#fff',
         margin: 10,
+        marginTop: 20,
+        paddingLeft: 40,
+        borderRadius: 15,
+        shadowColor: "#000",
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+        shadowOffset: {
+            height: 2,
+            width: 0
+        }
+    },
+    categoryImg: {
+        resizeMode: "cover",
+        width: 100,
+        height: 100,
+    },
+    categoryTitle: {
+        fontSize: 25,
+        fontWeight: '600',
+        color: '#212121'
     }
 });

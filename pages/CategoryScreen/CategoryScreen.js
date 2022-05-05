@@ -16,10 +16,8 @@ export default function CategoryScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 150
+    alignSelf: 'stretch',
+    marginTop: 100
   },
   headerContainer: {
     flex: 1,

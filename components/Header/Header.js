@@ -27,6 +27,8 @@ export default function Header(props) {
 
 const styles = StyleSheet.create({
   header: {
+    zIndex: 3, // works on ios
+    elevation: 3, // works on android
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
@@ -34,8 +36,6 @@ const styles = StyleSheet.create({
     top: 0,
     width: '100%',
     backgroundColor: '#25A006',
-    borderBottomColor: '#dedede',
-    borderBottomWidth: 2,
     paddingTop: 50,
     paddingBottom: 10,
     padding: 20,
