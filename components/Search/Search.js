@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native';
+import Slider from '../Slider/Slider';
 
 export default function Search() {
 
   return (
     <View style={styles.container}>
-      <Text>Ты в поиске, детка!</Text>
     </View>
   );
 }

@@ -1,5 +1,14 @@
-import { StyleSheet, Text, View, Image, FlatList, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, Image, FlatList, TouchableHighlight } from 'react-native';
 import Cucumber from '../../assets/category/cucumber.png'
+import Bread from '../../assets/category/bread.png'
+import Bakery from '../../assets/category/bakery.png'
+import Cheese from '../../assets/category/cheese.png'
+import Eggs from '../../assets/category/eggs.png'
+import Fish from '../../assets/category/fish.png'
+import Fruits from '../../assets/category/fruits.png'
+import Meat from '../../assets/category/meat.png'
+import Milk from '../../assets/category/milk.png'
+import Slider from '../Slider/Slider';
 
 
 
@@ -14,44 +23,46 @@ const DATA = [
     {
         id: 2,
         title: 'Мясо',
-        img: Cucumber
+        img: Meat
     },
     {
         id: 3,
         title: 'Молочко',
-        img: Cucumber
+        img: Milk
     },
     {
         id: 4,
         title: 'Яйца',
-        img: Cucumber
+        img: Eggs
     },
     {
         id: 5,
         title: 'Сыр',
-        img: Cucumber
+        img: Cheese
     },
     {
         id: 6,
         title: 'Выпечка',
-        img: Cucumber
+        img: Bread
     },
     {
         id: 7,
         title: 'Сладости',
-        img: Cucumber
+        img: Bakery
     },
     {
         id: 8,
         title: 'Фрукты',
-        img: Cucumber
+        img: Fruits
     },
     {
         id: 9,
         title: 'Рыба',
-        img: Cucumber
+        img: Fish
     }
 ]
+
+
 
 // const CategoriesOutput = () => {
 //     return Categories.map((item) => {
@@ -65,17 +76,10 @@ const DATA = [
 //     })
 // }
 
-const CategoryItem = ({ data }) => {
-    return (
-        <View style={styles.categoryItem}>
-            <Text style={styles.categoryTitle}>{data.title}</Text>
-            <Image style={styles.categoryImg} source={data.img} />
-        </View>
-    )
-}
 
 
-export default function CategoryList() {
+
+export default function CategoryList(props) {
 
     const RenderItem = ({ item }) => {
         return (
@@ -83,18 +87,33 @@ export default function CategoryList() {
         )
     }
 
+    const productTypeScreen = (data) => {
+        props.navigation.navigate('Product')
+    }
+
+    const CategoryItem = ({ data }) => {
+        return (
+            <TouchableHighlight onPress={() => { productTypeScreen(data) }} underlayColor="#F1F1F1" >
+                <View style={styles.categoryItem}>
+                    <Text style={styles.categoryTitle}>{data.title}</Text>
+                    <Image style={styles.categoryImg} source={data.img} />
+                </View>
+            </TouchableHighlight>
+
+        )
+    }
 
     return (
-        <SafeAreaView style={styles.container}>
-            <FlatList
-                data={DATA}
-                renderItem={RenderItem}
-                keyExtractor={item => item.id}
-
-            />
-        </SafeAreaView>
+        <FlatList
+            style={styles.flatlist}
+            data={DATA}
+            renderItem={RenderItem}
+            keyExtractor={item => item.id}
+            ListHeaderComponent={() => (
+                <Slider />
+            )}
+        />
     );
-
 }
 
 
@@ -129,5 +148,5 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: '600',
         color: '#212121'
-    }
+    },
 });
