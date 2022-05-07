@@ -88,7 +88,7 @@ export default function CategoryList(props) {
     }
 
     const productTypeScreen = (data) => {
-        props.navigation.navigate('Product')
+        props.navigation.navigate('Product', data)
     }
 
     const CategoryItem = ({ data }) => {
